@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <title>Live Organizer | نظّم حياتك</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">L</span><span>Live Organizer<small>نظّم يومك بذكاء</small></span></a>
+      <div class="side-label">القائمة الرئيسية</div>
+      <button class="nav-item active" data-view="dashboard"><span>▦</span> نظرة عامة</button>
+      <button class="nav-item" data-view="tasks"><span>✓</span> المهام</button>
+      <button class="nav-item" data-view="goals"><span>◎</span> الأهداف</button>
+      <button class="nav-item" data-view="expenses"><span>◈</span> المصروفات</button>
+      <button class="nav-item" data-view="schedule"><span>▤</span> جدول اليوم</button>
+      <div class="sidebar-bottom"><div class="mini-card"><span class="spark">✦</span><b>خطوة صغيرة كل يوم</b><p>الإنجاز يبدأ بتنظيم بسيط.</p></div><span class="version">الإصدار التجريبي 1.1</span></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><span class="eyebrow" id="today-label">مساحة يومك</span><h1 id="page-title">نظرة عامة</h1></div>
+        <div class="top-actions"><span class="date-chip" id="date-chip"></span><div class="avatar">U</div></div>
+      </header>
+
+      <section class="view active" id="dashboard-view">
+        <div class="welcome">
+          <div><span class="welcome-tag">مساحة يومك تبدأ من هنا</span><h2>أهلاً بك 👋<br>ما خطتك لهذا اليوم؟</h2><p>رتّب أولوياتك، تابع أهدافك، وراقب تقدمك خطوة بخطوة.</p></div>
+          <div class="welcome-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="art-check">✓</div><span class="art-star">✦</span></div>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span>مهام اليوم</span><span class="stat-icon purple">✓</span></div><strong id="stat-tasks">0</strong><small>مهام متبقية</small></article>
+          <article class="stat-card"><div class="stat-top"><span>المهام المكتملة</span><span class="stat-icon green">↗</span></div><strong id="stat-done">0</strong><small>إنجازاتك حتى الآن</small></article>
+          <article class="stat-card"><div class="stat-top"><span>الأهداف</span><span class="stat-icon orange">◎</span></div><strong id="stat-goals">0</strong><small>أهداف تتابعها</small></article>
+          <article class="stat-card"><div class="stat-top"><span>مصروفاتك</span><span class="stat-icon blue">◈</span></div><strong id="stat-expenses">0</strong><small>إجمالي ما سجلته</small></article>
+        </div>
+        <div class="content-grid">
+          <section class="panel"><div class="panel-heading"><div><h3>مهامك القادمة</h3><p>ابدأ بالأهم ثم انتقل إلى الباقي</p></div><button class="text-button" data-go="tasks">عرض الكل ←</button></div><div id="dashboard-task-list" class="task-list empty-state">لا توجد مهام بعد. أضف أول مهمة لك!</div></section>
+          <section class="panel progress-panel"><div class="panel-heading"><div><h3>تقدمك اليوم</h3><p>كل خطوة تقرّبك من هدفك</p></div></div><div class="progress-ring" id="progress-ring"><div><strong id="progress-percent">0%</strong><small>مكتمل</small></div></div><div class="progress-caption"><span>إنجاز المهام</span><b id="progress-fraction">0 من 0</b></div></section>
+        </div>
+      </section>
+
+      <section class="view" id="tasks-view">
+        <div class="section-intro"><div><h2>إدارة المهام</h2><p>اكتب ما تريد إنجازه، واترك الباقي للتنظيم.</p></div></div>
+        <form class="add-form" id="task-form"><input id="task-input" type="text" placeholder="مثلاً: مراجعة درس الرياضيات..." maxlength="90" required><select id="task-priority"><option value="عادية">عادية</option><option value="مهمة">مهمة</option><option value="عاجلة">عاجلة</option></select><button class="primary-btn" type="submit">＋ إضافة مهمة</button></form>
+        <div class="filter-row"><button class="filter active" data-filter="all">الكل</button><button class="filter" data-filter="active">قيد التنفيذ</button><button class="filter" data-filter="done">مكتملة</button></div>
+        <div id="tasks-list" class="panel task-list empty-state">لا توجد مهام بعد.</div>
+      </section>
+
+      <section class="view" id="goals-view">
+        <div class="section-intro"><div><h2>أهدافك</h2><p>حدّد هدفاً، ثم أضف ما تنجزه فعلياً في كل مرة.</p></div></div>
+        <form class="add-form goal-add-form" id="goal-form">
+          <input id="goal-input" type="text" placeholder="اسم الهدف، مثلاً: الركض هذا الشهر" maxlength="80" required>
+          <input id="goal-target" type="number" min="0.01" step="any" placeholder="القيمة المطلوبة" required>
+          <select id="goal-unit" aria-label="وحدة الهدف">
+            <option value="km">كيلومتر</option><option value="m">متر</option>
+            <option value="pages">صفحة</option><option value="books">كتاب</option>
+            <option value="hours">ساعة</option><option value="minutes">دقيقة</option>
+            <option value="USD">دولار</option><option value="count">مرة / عدد</option>
+          </select>
+          <button class="primary-btn" type="submit">＋ إضافة هدف</button>
+        </form>
+        <div id="goals-list" class="cards-list empty-state">لم تضف أي أهداف بعد.</div>
+      </section>
+
+      <section class="view" id="expenses-view">
+        <div class="section-intro"><div><h2>المصروفات</h2><p>سجّل مصروفاتك لتعرف أين تذهب أموالك.</p></div></div>
+        <div class="expense-summary"><span>إجمالي المصروفات المسجلة</span><strong id="expense-total">0</strong></div>
+        <form class="add-form" id="expense-form"><input id="expense-name" type="text" placeholder="اسم المصروف" maxlength="60" required><input id="expense-amount" type="number" min="0.01" step="0.01" placeholder="المبلغ" required><button class="primary-btn" type="submit">＋ تسجيل</button></form>
+        <div id="expenses-list" class="panel task-list empty-state">لا توجد مصروفات مسجلة.</div>
+      </section>
+
+      <section class="view" id="schedule-view">
+        <div class="section-intro"><div><h2>جدول اليوم</h2><p>نظرة بسيطة على يومك وما تريد إنجازه.</p></div></div>
+        <div class="panel schedule-panel"><div class="schedule-line"><span class="time-dot"></span><div><b>ابدأ بتحديد أهم مهمة</b><p>اختر مهمة واحدة مهمة وابدأ بها.</p></div><span class="time-label">البداية</span></div><div class="schedule-line"><span class="time-dot"></span><div><b>خذ استراحة قصيرة</b><p>الاستراحة تساعدك على استعادة التركيز.</p></div><span class="time-label">منتصف اليوم</span></div><div class="schedule-line"><span class="time-dot"></span><div><b>راجع إنجازاتك</b><p>حدّث مهامك وتعرّف على تقدمك اليوم.</p></div><span class="time-label">نهاية اليوم</span></div></div>
+        <p class="note">هذا جدول إرشادي مبدئي. يمكنك إضافة مهامك من قسم «المهام».</p>
+      </section>
+      <footer>صُنع لتنظيم يومك <span>✦</span> Live Organizer</footer>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
