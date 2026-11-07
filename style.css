@@ -19,8 +19,8 @@
 .goal-controls{display:flex;justify-content:flex-end;margin-top:8px}
 @media(max-width:650px){.goal-add-form>*{flex:1 1 100%!important}.goal-progress-form>*{flex:1 1 100%!important}.goal-meta{flex-direction:column;gap:3px}.cards-list{grid-template-columns:1fr}}
 
-/* Adsterra 300x250 banner */
-.ad-slot{display:flex;flex-direction:column;align-items:center;gap:7px;margin:18px auto 20px;padding:12px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);width:min(100%,326px)}
+/* Adsterra 320x50 banner */
+.ad-slot{display:flex;flex-direction:column;align-items:center;gap:5px;margin:18px auto 20px;padding:9px 12px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);width:min(100%,344px)}
 .ad-label{font-size:10px;color:var(--muted)}
-.ad-banner{width:300px;height:250px;max-width:100%;overflow:hidden;display:flex;justify-content:center;align-items:center}
-.ad-banner iframe{max-width:100%}
+.ad-banner{width:320px;height:50px;max-width:100%;overflow:hidden;display:flex;justify-content:center;align-items:center}
+.ad-banner iframe{max-width:100%;border:0}
